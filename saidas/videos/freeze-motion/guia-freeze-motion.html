@@ -2,10 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Guia Prático: Efeito FREEZE MOTION Bullet-Time com IA</title>
+  <title>Freeze Effect — Image and Animation Prompt Library | Escola de Ferramentas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     @page {
       size: A4 portrait;
@@ -44,7 +44,7 @@
       page-break-after: always;
       position: relative;
       overflow: hidden;
-      padding: 24mm 20mm;
+      padding: 20mm 18mm;
       display: flex;
       flex-direction: column;
       background-color: var(--bg);
@@ -53,18 +53,17 @@
         radial-gradient(circle at 90% 90%, rgba(255, 176, 32, 0.05) 0%, transparent 40%);
     }
 
-    /* Rodapé padrão das páginas */
     .page-footer {
       position: absolute;
-      bottom: 12mm;
-      left: 20mm;
-      right: 20mm;
+      bottom: 10mm;
+      left: 18mm;
+      right: 18mm;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-top: 1px solid var(--border);
-      padding-top: 8px;
-      font-size: 10px;
+      padding-top: 6px;
+      font-size: 9px;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -75,11 +74,11 @@
       font-weight: 700;
     }
 
-    /* PÁGINA 1: CAPA DE LUXO */
+    /* CAPA */
     .cover-page {
       justify-content: center;
       align-items: flex-start;
-      padding: 30mm 24mm;
+      padding: 26mm 22mm;
       background: linear-gradient(135deg, #07090E 0%, #0F131D 100%);
     }
 
@@ -87,7 +86,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 18px;
+      padding: 6px 16px;
       background: rgba(255, 107, 0, 0.12);
       border: 1px solid rgba(255, 107, 0, 0.35);
       border-radius: 9999px;
@@ -96,495 +95,500 @@
       color: var(--accent);
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .cover-title {
-      font-size: 46px;
+      font-size: 42px;
       font-weight: 900;
       line-height: 1.05;
       text-transform: uppercase;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       color: #FFFFFF;
     }
 
     .cover-title span {
       font-family: 'Anton', sans-serif;
-      font-size: 64px;
+      font-size: 58px;
       letter-spacing: 2px;
       display: block;
       background: linear-gradient(180deg, #FFB020 0%, #FF5500 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 24px rgba(255, 107, 0, 0.5));
     }
 
     .cover-subtitle {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 500;
-      line-height: 1.6;
+      line-height: 1.5;
       color: #D1D5DB;
-      max-width: 520px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+      max-width: 540px;
     }
 
-    .cover-features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      width: 100%;
-      margin-bottom: 48px;
-    }
-
-    .feature-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-    }
-
-    .feature-card .icon {
-      font-size: 20px;
-      color: var(--primary);
-      margin-bottom: 6px;
-    }
-
-    .feature-card h4 {
-      font-size: 13px;
-      font-weight: 800;
-      color: #FFFFFF;
-      margin-bottom: 4px;
-    }
-
-    .feature-card p {
-      font-size: 11px;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    .cover-author {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      width: 100%;
-    }
-
-    .author-avatar-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 12px var(--primary);
-    }
-
-    .author-info h5 {
-      font-size: 14px;
-      font-weight: 800;
-      color: #FFFFFF;
-    }
-
-    .author-info p {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    /* PÁGINAS INTERNAS */
-    .section-header {
-      margin-bottom: 20px;
-    }
-
-    .section-tag {
-      font-size: 10px;
-      font-weight: 800;
-      color: var(--primary);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      display: block;
-    }
-
-    .section-title {
-      font-size: 24px;
-      font-weight: 900;
-      color: #FFFFFF;
-      line-height: 1.2;
-    }
-
-    .content-box {
+    .tools-box {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px 20px;
-      margin-bottom: 16px;
+      border-radius: 12px;
+      padding: 16px 20px;
+      width: 100%;
+      margin-bottom: 30px;
     }
 
-    .content-box h3 {
-      font-size: 15px;
+    .tools-box h3 {
+      font-size: 13px;
       font-weight: 800;
       color: var(--accent);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .content-box p {
-      font-size: 12.5px;
-      line-height: 1.6;
-      color: #D1D5DB;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       margin-bottom: 10px;
     }
 
-    .content-box p:last-child {
-      margin-bottom: 0;
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
 
-    /* Caixa de Código / Prompt */
-    .prompt-box {
-      background: var(--code-bg);
-      border: 1px solid rgba(255, 107, 0, 0.25);
-      border-left: 4px solid var(--primary);
+    .tool-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 8px;
-      padding: 14px;
-      margin: 10px 0;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      line-height: 1.6;
-      color: #FBBF24;
-      white-space: pre-wrap;
+      padding: 10px 14px;
     }
 
-    .prompt-label {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--primary);
+    .tool-item strong {
+      display: block;
+      font-size: 12px;
+      color: #FFF;
+      margin-bottom: 2px;
+    }
+
+    .tool-item span {
+      font-size: 10.5px;
+      color: var(--text-muted);
+    }
+
+    .flow-card {
+      background: rgba(255, 107, 0, 0.08);
+      border: 1px solid rgba(255, 107, 0, 0.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .flow-card h4 {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--primary-light);
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 6px;
     }
 
-    .highlight-pill {
+    .flow-card p {
+      font-size: 11.5px;
+      color: #E5E7EB;
+      line-height: 1.5;
+    }
+
+    /* PÁGINAS INTERNAS */
+    .scene-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    .scene-number {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .scene-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #FFFFFF;
+    }
+
+    .prompt-block {
+      margin-bottom: 12px;
+    }
+
+    .prompt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .prompt-tag {
       background: rgba(255, 107, 0, 0.15);
       color: var(--primary-light);
       padding: 2px 8px;
       border-radius: 4px;
+      font-size: 9px;
       font-weight: 700;
-      font-size: 11px;
     }
 
-    .alert-card {
-      background: rgba(239, 68, 68, 0.08);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      border-radius: 10px;
-      padding: 12px 16px;
-      margin-top: 12px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
+    .prompt-content {
+      background: var(--code-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 3px solid var(--primary);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      line-height: 1.5;
+      color: #E5E7EB;
+      white-space: pre-wrap;
     }
 
-    .alert-card .alert-icon {
-      font-size: 16px;
-      color: #F87171;
-    }
-
-    .alert-card p {
-      font-size: 11.5px;
+    .prompt-content.negative {
+      border-left-color: #EF4444;
       color: #FCA5A5;
-      line-height: 1.5;
+      font-size: 9px;
     }
 
-    .tip-card {
-      background: rgba(16, 185, 129, 0.08);
+    .prompt-content.animation {
+      border-left-color: #10B981;
+      color: #D1FAE5;
+    }
+
+    .timing-badge {
+      background: rgba(16, 185, 129, 0.12);
       border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 10px;
-      padding: 12px 16px;
-      margin-top: 12px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .tip-card .tip-icon {
-      font-size: 16px;
+      border-radius: 6px;
+      padding: 6px 12px;
+      margin-top: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
       color: #34D399;
-    }
-
-    .tip-card p {
-      font-size: 11.5px;
-      color: #6EE7B7;
-      line-height: 1.5;
-    }
-
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #FFF;
-      font-size: 12px;
-      font-weight: 900;
-      margin-right: 6px;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
 
   <!-- =====================================================================
-       PÁGINA 1: CAPA EXECUTIVA
+       PÁGINA 1: CAPA & FLUXO DE PRODUÇÃO
        ===================================================================== -->
   <div class="page cover-page">
     <div class="cover-badge">
-      ⚡ MANUAL DE ENGENHARIA DE PROMPT • EXCLUSIVO DIRECT
+      ⚡ ESCOLA DE FERRAMENTAS • PROMPT LIBRARY
     </div>
 
     <h1 class="cover-title">
-      COMO FAZER O EFEITO
-      <span>FREEZE MOTION</span>
-      COM INTELIGÊNCIA ARTIFICIAL
+      FREEZE EFFECT
+      <span>IMAGE & ANIMATION</span>
+      PROMPT LIBRARY
     </h1>
 
     <p class="cover-subtitle">
-      O fluxo de produção passo a passo, a técnica de separação física da cena e os prompts mestres para criar vídeos cinematográficos em bullet-time sem pós-produção 3D.
+      Biblioteca completa de prompts de imagem e animação para criação do efeito bullet-time com inteligência artificial.
     </p>
 
-    <div class="cover-features">
-      <div class="feature-card">
-        <div class="icon">🧊</div>
-        <h4>Física Separada</h4>
-        <p>Como forçar o modelo a congelar o tempo no ar enquanto gira a câmera em 180°.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="icon">📸</div>
-        <h4>Foto Âncora Mestre</h4>
-        <p>Por que animar direto do zero falha e como travar a fisionomia na imagem.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="icon">✂️</div>
-        <h4>Cortes Cirúrgicos</h4>
-        <p>O segredo dos 4.2 segundos para nunca filmar as costas do personagem.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="icon">🎵</div>
-        <h4>Sound Design & Flash</h4>
-        <p>Os efeitos sonoros que substituem whooshes feios por impacto de cinema.</p>
+    <div class="tools-box">
+      <h3>🛠️ Tools Used (Ferramentas Utilizadas)</h3>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <strong>1. Image Generation (Foto Âncora)</strong>
+          <span>ChatGPT (GPT Image) • Midjourney • Google Imagen</span>
+        </div>
+        <div class="tool-item">
+          <strong>2. Video Generation (Órbita 180°)</strong>
+          <span>VOSU AI • Google Veo • Kling AI • Sora</span>
+        </div>
       </div>
     </div>
 
-    <div class="cover-author">
-      <div class="author-avatar-dot"></div>
-      <div class="author-info">
-        <h5>Escola de Ferramentas • @escoladeferramentas</h5>
-        <p>Material Prático de Execução com Inteligência Artificial Generativa</p>
+    <div class="flow-card">
+      <h4>Como Usar Esta Biblioteca (Fluxo em 2 Passos):</h4>
+      <p>
+        <strong>Passo 1 (Foto Âncora):</strong> Gere a imagem utilizando a foto do seu personagem com a tag de referência <code>@img</code> para fixar a fisionomia e a postura congelada no ar.<br><br>
+        <strong>Passo 2 (Animação de Órbita):</strong> Suba a imagem gerada no modelo de vídeo (Image-to-Video) e cole o <em>Animation Prompt</em> correspondente. O personagem e todos os objetos ficam 100% congelados no tempo enquanto a câmera completa a órbita de 180 graus.
+      </p>
+    </div>
+
+    <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border); width: 100%; display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h5 style="font-size: 13px; font-weight: 800; color: #FFF;">Escola de Ferramentas</h5>
+        <p style="font-size: 10px; color: var(--text-muted);">@escoladeferramentas</p>
+      </div>
+      <div style="font-size: 11px; font-weight: 700; color: var(--primary);">
+        5 CENAS COMPLETAS PRONTAS
       </div>
     </div>
 
     <div class="page-footer">
-      <span>Guia Prático Freeze Motion • v1.0</span>
+      <span>Freeze Effect Prompt Library • v1.0</span>
       <span class="brand">@escoladeferramentas</span>
     </div>
   </div>
 
   <!-- =====================================================================
-       PÁGINA 2: O CONCEITO & ETAPA 1 (A FOTO ÂNCORA)
+       PÁGINA 2: CENA 1 — SUSPENDED ABOVE THE CITY
        ===================================================================== -->
   <div class="page">
-    <div class="section-header">
-      <span class="section-tag">MÓDULO 01 • FUNDAÇÃO VISUAL</span>
-      <h2 class="section-title">O Maior Erro: Querer Gerar o Vídeo do Zero</h2>
-    </div>
-
-    <div class="content-box">
-      <h3>Por que os modelos de vídeo falham sem imagem prévia?</h3>
-      <p>
-        Quando você pede para um modelo de vídeo (Veo, Sora, Kling, Runaway) inventar uma pessoa levitando, o modelo precisa calcular três coisas ao mesmo tempo: <strong>a fisionomia da pessoa</strong>, <strong>a física da cena</strong> e <strong>a trajetória da câmera</strong>.
-      </p>
-      <p>
-        O resultado quase sempre é catastrófico: rostos derretidos, membros extras e animações artificiais.
-      </p>
-      <p>
-        <strong>A Regra de Ouro:</strong> Primeiro crie a <em>Foto Âncora Estática</em> em altíssima definição (1080×1920) onde o personagem já está na postura congelada e os objetos já estão no ar. O modelo de vídeo servirá <strong>apenas</strong> para orbitar a câmera!
-      </p>
-    </div>
-
-    <div class="content-box">
-      <h3><span class="step-number">1</span> Prompt Mestre para a Foto Âncora (Midjourney / Imagen / Nano Banana)</h3>
-      <p>Use este template exato trocando os elementos de colisão pelo seu nicho:</p>
-
-      <div class="prompt-label">
-        <span>Template de Imagem Estática (Âncora 1080×1920)</span>
-        <span class="highlight-pill">9:16</span>
+    <div class="scene-header">
+      <div>
+        <span class="scene-number">SCENE 01</span>
+        <h2 class="scene-title">Suspended Above the City</h2>
       </div>
-      <div class="prompt-box">Cinematic wide angle freeze-motion photograph of [DESCREVER SEU PERSONAGEM: ex: a robust man with short curly dark hair, well-trimmed short beard, modern black sweater] frozen mid-air, levitating horizontally parallel to the ground in bullet-time matrix style. 
-His body is floating effortlessly in mid-air in front of [CENÁRIO: ex: clean modern brutalist architectural courtyard].
-Surrounding him, dozens of [OBJETOS EM SUSPENSÃO: ex: crisp white paper sheets with printed documents] are completely frozen floating motionless in the air, creating depth and dynamic perspective. 
-Golden hour soft cinematic lighting, rim light accentuating the silhouette, ultra-sharp focus on the character's facial expression of surprise and focus, hyper-realistic physics, 8k resolution, Hasselblad depth of field --ar 9:16 --v 6.1</div>
+      <span class="prompt-tag">Bullet-Time Urbano</span>
+    </div>
 
-      <div class="tip-card">
-        <div class="tip-icon">💡</div>
-        <p><strong>Dica de Ouro:</strong> Adicione termos como <em>"frozen mid-air"</em>, <em>"motionless floating objects"</em> e <em>"zero velocity suspended in time"</em> para que a IA desenhe os objetos nítidos, sem borrões de movimento (motion blur) na foto estática.</p>
+    <!-- Image Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>📸 Step 1: Image Prompt (Foto Âncora)</span>
+        <span class="prompt-tag">GPT Image / Midjourney</span>
+      </div>
+      <div class="prompt-content">Create a photorealistic cinematic freeze-frame using @img as the exact male identity reference. Preserve his facial structure, hairstyle, skin tone, facial hair, age, and body proportions without beautification.
+Show him suspended high above a city street, caught in a dramatic falling pose. His torso leans backward, one open hand reaches toward the camera with fingers spread, and one bent leg projects toward the lens, making the shoe sole appear large in the foreground. His other leg extends diagonally outward. His mouth is open in surprise. Dress him in a plain white crew-neck T-shirt, blue jeans, tan rubber-soled casual shoes, and black sunglasses.
+Far below, show an asphalt street with lane markings, parked cars, tiny pedestrians, leafy trees, and tall stone buildings. Suspend a smartphone, keys, loose coins, and white papers around him at different depths. Shoot from above, looking steeply downward with a 24mm wide-angle lens. Keep his face recognizable, with perspective exaggeration concentrated on the reaching hand and foreground shoe. Bright midday sunlight, realistic shadows, natural colors, crisp textures, every object frozen sharply.</div>
+    </div>
+
+    <!-- Negative Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>🚫 Negative Prompt</span>
+      </div>
+      <div class="prompt-content negative">Different identity, altered facial features, changed hairstyle, distorted face, extra fingers, extra limbs, duplicate person, malformed hands, warped buildings, motion blur, illustration, blood, injuries, text, captions, logos, watermarks, interface elements.</div>
+    </div>
+
+    <!-- Animation Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>🎬 Step 2: Animation Prompt (Image-to-Video)</span>
+        <span class="prompt-tag">VOSU / Veo / Kling</span>
+      </div>
+      <div class="prompt-content animation">Create a cinematic bullet-time shot using the reference image. Everything in the scene must remain completely frozen in time throughout the entire video. The male character must remain perfectly frozen in the exact falling pose shown in the reference, with absolutely no body movement, no head movement, no facial movement, no blinking, no breathing animation, no hair movement, no clothing movement and no change in expression. The smartphone, keys, coins, papers and every other airborne object must remain completely suspended and locked in their exact positions. The cars, pedestrians, trees, buildings, street and entire city environment below must also remain completely frozen. The character must not continue falling or move downward.
+Only the camera moves. Smoothly orbit the camera around the completely frozen character in a cinematic 180-degree arc during the full duration of the shot. Start directly from the front of the character, move naturally around one side, reach the 90-degree side profile around the middle of the video, then continue around and finish directly behind the character at 180 degrees near the end. Use a controlled medium-slow orbital speed — clearly moving throughout the shot, but never fast, rushed or extremely slow. Keep the speed smooth and consistent from beginning to end. The camera must physically travel around the character in 3D space while maintaining a consistent distance and keeping him as the fixed center point.
+The changing camera perspective should create strong realistic 3D parallax between the frozen phone, keys, coins, character and distant city below. The character's face and identity must remain exactly consistent with the reference. Maintain the exact clothing, pose, proportions, lighting and object positions. Photorealistic cinematic lighting, realistic depth of field, dramatic height perspective, high-end Hollywood cinematography, Matrix-style bullet-time effect, ultra-stable camera movement, one continuous seamless shot, no cuts.</div>
+      <div class="timing-badge">
+        ⏱️ CAMERA TIMING: FRONT → 45° → SIDE 90° → 135° → BACK 180°. Medium-slow constant speed. ZERO scene motion except camera.
       </div>
     </div>
 
     <div class="page-footer">
-      <span>Guia Prático Freeze Motion • Página 02</span>
+      <span>Freeze Effect Prompt Library • Cena 01</span>
       <span class="brand">@escoladeferramentas</span>
     </div>
   </div>
 
   <!-- =====================================================================
-       PÁGINA 3: ETAPA 2 & 3 (ANIMAÇÃO DE VÍDEO & CORTE CIRÚRGICO)
+       PÁGINA 3: CENA 2 — FLOATING AMONG PAPERS
        ===================================================================== -->
   <div class="page">
-    <div class="section-header">
-      <span class="section-tag">MÓDULO 02 • O SEGREDO DO MOVIMENTO</span>
-      <h2 class="section-title">Como Comandar a Órbita de Câmera na IA</h2>
-    </div>
-
-    <div class="content-box">
-      <h3><span class="step-number">2</span> O Princípio da Física Separada no Prompt de Vídeo</h3>
-      <p>
-        No gerador de vídeo (Kling, Luma Dream Machine, Sora, Veo ou OmniHuman), faça o upload da <strong>Foto Âncora como Primeiro Frame (Image-to-Video)</strong>.
-      </p>
-      <p>
-        No prompt de comando de movimento, você deve <strong>separar explicitamente</strong> a física da cena (que deve permanecer 100% inerte) do movimento da câmera (que deve orbitar):
-      </p>
-
-      <div class="prompt-label">
-        <span>Prompt Mestre de Movimento (Image-to-Video)</span>
-        <span class="highlight-pill">Motion Prompt</span>
+    <div class="scene-header">
+      <div>
+        <span class="scene-number">SCENE 02</span>
+        <h2 class="scene-title">Floating Among Papers</h2>
       </div>
-      <div class="prompt-box">Bullet-time freeze motion video. The character and all floating [OBJETOS: ex: papers / coins / sneakers] remain completely frozen and motionless in mid-air with zero physics movement, absolutely stopped in time. 
-The camera performs a smooth, continuous 180-degree orbital arc around the floating character at eye level, showcasing the three-dimensional frozen scene in cinematic parallax. 
-Hyper-realistic volumetric lighting, photorealistic textures, smooth cinema gimbal motion, 30fps.</div>
+      <span class="prompt-tag">Voo Matrix Horizontal</span>
     </div>
 
-    <div class="content-box">
-      <h3><span class="step-number">3</span> A Regra Mandatória dos Cortes Cirúrgicos (3.8s a 4.8s)</h3>
-      <p>
-        Preste muita atenção nisto: os modelos de vídeo de IA generativa são treinados para criar continuidade espacial. Quando você pede um movimento de câmera de 6 segundos, a câmera <strong>vai girar até as costas do personagem</strong>!
-      </p>
-      <p>
-        Se você deixar o clipe rodar até o final, seu vídeo vai terminar com a câmera filmando a bunda ou as costas do especialista, estragando o dinamismo e a conexão com o espectador.
-      </p>
+    <!-- Image Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>📸 Step 1: Image Prompt (Foto Âncora)</span>
+      </div>
+      <div class="prompt-content">Create a photorealistic cinematic freeze-frame featuring the exact male character from @img. Preserve his face, hairstyle, facial hair, skin tone, age, and natural body proportions.
+Position him floating horizontally above a pale concrete floor, with his chest facing downward and his face turned upward toward the camera. One arm reaches directly toward the lens with an open palm and naturally spread fingers; the other arm stretches backward to the side. His legs trail behind his torso, largely hidden by perspective. Give him a surprised expression with an open mouth. He wears a black and mustard-brown horizontally striped sweater, dark trousers, and clear-lens rectangular black glasses.
+Use a simple outdoor courtyard with a warm salmon-colored plaster wall behind him. Surround him with numerous white printed documents frozen in midair, some close to the lens and others near the floor. The document print is subtle and indistinct. Cast a strong, coherent shadow of his floating body and scattered papers onto the concrete. Elevated camera looking downward, 24mm wide-angle perspective, bright directional sunlight, crisp focus, warm natural color grading.</div>
+    </div>
 
-      <div class="alert-card">
-        <div class="alert-icon">⚠️</div>
-        <p><strong>Corte Cirúrgico Obrigatório:</strong> No seu editor de vídeo, corte o clipe entre <strong>3.8 segundos e 4.5 segundos</strong>. Pare a cena enquanto a câmera ainda está na vista frontal ou semi-perfil dinâmico (3/4). Nunca deixe passar para as costas!</p>
+    <!-- Negative Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>🚫 Negative Prompt</span>
+      </div>
+      <div class="prompt-content negative">Identity drift, different face, standing pose, feet touching the floor, extra arms, malformed fingers, duplicate papers with identical shapes, floating shadows, soft motion blur, cartoon appearance, prominent readable text, captions, watermarks, logos, UI overlays.</div>
+    </div>
+
+    <!-- Animation Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>🎬 Step 2: Animation Prompt (Image-to-Video)</span>
+      </div>
+      <div class="prompt-content animation">Create a cinematic bullet-time shot using the reference image. Everything in the scene must remain completely frozen in time throughout the entire video. The male character must remain perfectly frozen in the exact horizontal airborne pose shown in the reference, with absolutely no body movement, no head movement, no facial movement, no blinking, no breathing animation, no hair movement, no clothing movement and no change in expression. Every sheet of paper surrounding him must remain completely suspended in its exact original position, angle, orientation and shape. The papers must not flutter, rotate, drift or fall. The character's shadow, ground and entire environment must remain static.
+Only the camera moves. Smoothly orbit the camera around the completely frozen character in a cinematic 180-degree arc during the full duration of the shot. Begin directly from the front, gradually travel around one side, reach the character's side profile at approximately 90 degrees around the middle of the shot, then continue around until reaching the back view at exactly 180 degrees near the end. Use a controlled medium-slow orbital speed that produces continuous visible movement without feeling either fast or excessively slow.
+Keep the character as the fixed center of the orbit and maintain a consistent camera-to-subject distance. As the viewpoint changes, the frozen foreground papers should create dramatic natural parallax against the character and background, but the papers themselves must remain perfectly stationary in 3D space. Preserve the character's exact face, identity, clothing, body proportions and pose. Photorealistic lighting, realistic depth of field, high-speed photography aesthetic, premium Hollywood cinematography, Matrix-style bullet-time effect, smooth stabilized camera movement, one continuous seamless shot, no cuts.</div>
+      <div class="timing-badge">
+        ⏱️ CAMERA TIMING: FRONT → 45° → SIDE 90° → 135° → BACK 180°. Complete the movement evenly across the full shot at medium-slow constant speed.
       </div>
     </div>
 
     <div class="page-footer">
-      <span>Guia Prático Freeze Motion • Página 03</span>
+      <span>Freeze Effect Prompt Library • Cena 02</span>
       <span class="brand">@escoladeferramentas</span>
     </div>
   </div>
 
   <!-- =====================================================================
-       PÁGINA 4: EDIÇÃO DE ALTA RETENÇÃO & SOUND DESIGN
+       PÁGINA 4: CENA 3 — STREET + FLOATING OBJECTS (BOLSA & MOEDAS)
        ===================================================================== -->
   <div class="page">
-    <div class="section-header">
-      <span class="section-tag">MÓDULO 03 • RETENÇÃO DE 100%</span>
-      <h2 class="section-title">A Estrutura de Edição Hipnótica</h2>
+    <div class="scene-header">
+      <div>
+        <span class="scene-number">SCENE 03</span>
+        <h2 class="scene-title">Paris Street Fashion Freeze</h2>
+      </div>
+      <span class="prompt-tag">Queda com Bolsa & Moedas</span>
     </div>
 
-    <div class="content-box">
-      <h3>1. Alternância Vídeo de Ação ➔ Typography Cards</h3>
-      <p>
-        Vídeo de ação contínuo cansa o cérebro se não houver quebra de padrão. O método oficial da <strong>Escola de Ferramentas</strong> utiliza o <strong>ritmo alternado de alta retenção</strong>:
-      </p>
-      <p>
-        • <strong>Clipe 1 (0.0s a 3.8s):</strong> Voo de ação com o Título congelado no MEIO da tela.<br>
-        • <strong>Card 1 (3.8s a 6.8s):</strong> Typography Card em tela cheia (fundo preto puro, número gigante ou frase de impacto com glow neon).<br>
-        • <strong>Clipe 2 (6.8s a 10.8s):</strong> Segunda cena de ação congelada com legenda karaokê.<br>
-        • <strong>Card 2 (10.8s a 14.5s):</strong> Segundo poster tipográfico editorial.<br>
-        • <strong>Clipe 3 (14.5s a 19.3s):</strong> Terceira cena de ação.<br>
-        • <strong>Card CTA (28.3s ao fim):</strong> Chamada final para ação com botão de comentar.
-      </p>
+    <!-- Image Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>📸 Step 1: Image Prompt (Foto Âncora)</span>
+      </div>
+      <div class="prompt-content">Create a photorealistic fashion-editorial freeze-frame using @img as the exact male identity reference. Retain his recognizable face, hairstyle, facial hair, skin tone, age, height, and body proportions.
+Capture him suspended just above a cobblestone street in an exaggerated backward stumble. One leg kicks high toward the upper-left foreground, while the other bends downward, its shoe hovering close to the pavement. One hand stretches overhead toward a floating leather satchel, and the opposite arm extends outward for balance. His face remains clearly visible with a surprised, open-mouthed expression.
+Dress him in a long camel-colored belted wool coat, a cream knit sweater, tailored tan trousers, and polished brown leather loafers. Freeze the coat hem and belt ends in midair. Above him, suspend an open brown leather satchel with keys, coins, a small notebook, a pen, and a cardholder spilling out.
+Set the scene on a sunlit Parisian street with cream limestone buildings, wrought-iron balconies, a traditional black streetlamp, and a raised sidewalk. Low camera near knee height, 28mm lens, full-body composition, warm afternoon light, detailed fabric textures, realistic contact-free shadows, every airborne object sharply frozen.</div>
     </div>
 
-    <div class="content-box">
-      <h3>2. Sound Design: Diga Adeus ao "Whoosh" Amador</h3>
-      <p>
-        Em 2026, quem ainda usa aquele barulho agressivo de vento (*whoosh*) nas transições perde o ar de sofisticação.
-      </p>
-      <p>
-        O segredo de um vídeo Freeze Motion é usar o **Som de Flash Fotográfico / Obturador de Câmera** (<em>camera shutter click</em>) com volume suave (18%), sincronizado com um clarão branco suave na tela (flash de 4 frames).
-      </p>
-      <p>
-        Isso condiciona o cérebro do público a sentir que cada transição é uma "fotografia congelada no tempo", elevando o valor percebido da sua produção para o patamar cinematográfico.
-      </p>
+    <!-- Negative Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>🚫 Negative Prompt</span>
+      </div>
+      <div class="prompt-content negative">Different identity, feminine body proportions, high heels, altered height, face distortion, extra limbs, broken joints, merged accessories, duplicate bags, motion blur, cartoon rendering, text, captions, logos, watermarks, interface elements.</div>
+    </div>
 
-      <div class="tip-card">
-        <div class="tip-icon">🎵</div>
-        <p><strong>Trilha Recomendada:</strong> Utilize batidas cinematográficas com percussão marcada, graves potentes e suspense moderno (ex: trilhas estilo <em>Hitman</em> ou <em>Cinematic Trap</em>) com volume calibrado em 12% a 15% para não abafar sua voz.</p>
+    <!-- Animation Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>🎬 Step 2: Animation Prompt (Image-to-Video)</span>
+      </div>
+      <div class="prompt-content animation">Create a cinematic bullet-time shot using the reference image. Everything in the scene must remain completely frozen in time throughout the entire video. The male character must remain perfectly frozen in the exact off-balance pose shown in the reference, with absolutely no body movement, facial movement, blinking, breathing animation, head movement, hair movement, clothing movement or expression change.
+The brown leather bag, keys, coins, notebook, pen and every other airborne object must remain perfectly suspended and locked at their exact positions in 3D space. Nothing can fall, rotate, drift or move. His coat and clothing must remain completely frozen with no wind movement. The street, buildings, lamps and entire background environment must also remain static.
+Only the camera moves. Smoothly orbit the camera around the completely frozen character in a cinematic 180-degree arc during the full duration of the shot. Start directly from the front, gradually travel around one side, reach the 90-degree side profile around the middle of the video, then continue around until reaching directly behind the character at exactly 180 degrees. Use a controlled medium-slow orbital speed, with clear continuous camera movement that never becomes too fast or excessively slow.
+Keep the character centered and maintain a consistent camera-to-subject distance. The frozen bag, keys, coins and other objects should create strong multilayer 3D parallax as the camera changes perspective, while remaining completely stationary themselves. Preserve the character's exact identity, face, clothing, body proportions, pose and environment. Photorealistic cinematic lighting, realistic depth of field, premium editorial cinematography, Matrix-style bullet-time effect, smooth stabilized camera movement, one continuous seamless shot, no cuts.</div>
+      <div class="timing-badge">
+        ⏱️ CAMERA TIMING: FRONT → 45° → SIDE 90° → 135° → BACK 180°. Maintain balanced medium-slow speed. ZERO scene motion except camera.
       </div>
     </div>
 
     <div class="page-footer">
-      <span>Guia Prático Freeze Motion • Página 04</span>
+      <span>Freeze Effect Prompt Library • Cena 03</span>
       <span class="brand">@escoladeferramentas</span>
     </div>
   </div>
 
   <!-- =====================================================================
-       PÁGINA 5: 4 IDEIAS DE CENAS PRONTAS & CHECKLIST FINAL
+       PÁGINA 5: CENA 4 — GARDEN HOSE JUMP (ÁGUA CONGELADA)
        ===================================================================== -->
   <div class="page">
-    <div class="section-header">
-      <span class="section-tag">MÓDULO 04 • BIBLIOTECA DE CENAS</span>
-      <h2 class="section-title">4 Ideias de Cenas Congeladas para Copiar</h2>
+    <div class="scene-header">
+      <div>
+        <span class="scene-number">SCENE 04</span>
+        <h2 class="scene-title">Frozen Water Bullet Time</h2>
+      </div>
+      <span class="prompt-tag">Jato d'Água Congelado</span>
     </div>
 
-    <div class="content-box">
-      <h3>💡 Ideias Testadas de Alto Impacto para seu Nicho</h3>
-      <p>
-        <strong>1. Cena Corporativa / Finanças:</strong> O especialista caindo em câmera lenta no chão de pedra enquanto sua pasta de couro se abre e notas de dinheiro, moedas douradas e canetas tinteiro flutuam congeladas no ar.<br>
-        <strong>2. Cena Tech / Produtividade:</strong> O especialista sentado em uma cadeira invisível no ar enquanto teclados mecânicos, cabos neon e janelas de código flutuam suspensos ao redor.<br>
-        <strong>3. Cena de Educação / Marketing:</strong> Voo horizontal com centenas de relatórios, gráficos impressos e folhas de papel dobradas flutuando em bullet time.<br>
-        <strong>4. Cena de Varejo / Moda:</strong> Tênis esportivo explodindo em gravidade zero com cadarços e partículas de glitter suspensos enquanto a pessoa salta no ar.
-      </p>
+    <!-- Image Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>📸 Step 1: Image Prompt (Foto Âncora)</span>
+      </div>
+      <div class="prompt-content">Create a photorealistic action freeze-frame starring the exact male character from @img. Preserve his facial identity, skin tone, facial hair, age, and hairstyle; allow only natural movement of his existing hair.
+Show him at the peak of a powerful jump, with both knees tucked tightly toward his chest and both boots fully airborne. His body turns slightly sideways while his face looks toward the camera. One arm extends high above his shoulder, gripping a green garden hose, while the other hand holds the lower section beside his boots. The hose forms a broad U-shaped loop beneath and around his tucked legs. Water sprays from the open end near his lower hand, creating an expansive arc of individually visible droplets across the foreground.
+He wears a mustard-yellow T-shirt darkened in places by water, loose dark-blue jeans, worn tan work boots, and narrow silver-framed sunglasses. Background: a neatly trimmed green hedge and pale blue sky. Low-angle 35mm photograph, tight full-body framing, bright summer daylight, fast-shutter sharpness on his face and body, sparkling water droplets, natural green and yellow tones.</div>
     </div>
 
-    <div class="content-box">
-      <h3>✅ Checklist de Publicação (Antes de Postar)</h3>
-      <p>
-        [ ] A foto âncora foi gerada primeiro em 1080×1920 com biotipo fiel?<br>
-        [ ] O prompt de vídeo contém <em>"zero physics movement, stopped in time"</em>?<br>
-        [ ] Cada clipe foi cortado antes dos 4.8s para evitar poses de costas?<br>
-        [ ] O hook inicial está cravado no <strong>meio da tela</strong> com contraste alto?<br>
-        [ ] As transições usam som de <strong>flash fotográfico</strong> em vez de whoosh?<br>
-        [ ] Sua marca ou handle (@seu_perfil) está visível em todo o vídeo?
-      </p>
+    <!-- Negative Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>🚫 Negative Prompt</span>
+      </div>
+      <div class="prompt-content negative">Different face, changed hair color, untucked standing pose, feet on the ground, skipping rope replacing the hose, disconnected hose sections, impossible water flow, extra fingers, extra limbs, distorted boots, excessive blur, text, logos, watermarks, UI elements.</div>
     </div>
 
-    <div class="content-box" style="background: linear-gradient(135deg, rgba(255, 107, 0, 0.15) 0%, rgba(255, 176, 32, 0.05) 100%); border-color: rgba(255, 107, 0, 0.4); text-align: center; padding: 24px;">
-      <h3 style="justify-content: center; font-size: 18px; color: #FFFFFF; margin-bottom: 6px;">
-        Quer dominar as melhores ferramentas de IA?
-      </h3>
-      <p style="font-size: 13px; color: #E5E7EB; margin-bottom: 12px;">
-        Acompanhe os tutoriais práticos e esteiras completas de automação e produção no perfil oficial:
-      </p>
-      <div style="font-size: 20px; font-weight: 900; color: var(--primary); letter-spacing: 1px;">
-        @escoladeferramentas
+    <!-- Animation Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>🎬 Step 2: Animation Prompt (Image-to-Video)</span>
+      </div>
+      <div class="prompt-content animation">Create a cinematic bullet-time shot using the reference image. Everything in the scene must remain completely frozen in time throughout the entire video. The male character must remain perfectly frozen in the exact airborne crouching pose shown in the reference while holding the garden hose exactly as shown. There must be absolutely no body movement, facial movement, blinking, breathing animation, head movement, hair movement, clothing movement or pose change.
+The entire curved stream of water and every individual water droplet must remain perfectly frozen in mid-air in its exact original position and shape. The water must not flow, fall, splash, regenerate or change shape. The hose must remain completely fixed. The grass, trees, house, shadows and entire environment must also remain static.
+Only the camera moves. Smoothly orbit the camera around the completely frozen character in a cinematic 180-degree arc during the full duration of the shot. Begin directly from the front, gradually move around one side, reach the 90-degree side view around the middle, then continue until the camera reaches directly behind the character at exactly 180 degrees. Use a controlled medium-slow orbital speed, clearly moving but never rushing and never becoming excessively slow.
+The camera should physically travel through the 3D space around the suspended water composition, producing dramatic parallax between foreground droplets, the character, the frozen water arc and the background. Keep the character as the fixed center point and maintain a consistent orbital radius. Preserve his exact face, identity, clothing, body proportions and pose. Photorealistic lighting, crystal-clear suspended water droplets, realistic refraction, cinematic depth of field, high-speed Phantom-camera aesthetic, Matrix-style bullet time, ultra-stable camera movement, one continuous seamless shot, no cuts.</div>
+      <div class="timing-badge">
+        ⏱️ CAMERA TIMING: FRONT → 45° → SIDE 90° → 135° → BACK 180°. Water and character remain ABSOLUTELY FROZEN. ZERO scene motion except camera.
       </div>
     </div>
 
     <div class="page-footer">
-      <span>Guia Prático Freeze Motion • Página 05 (Fim)</span>
+      <span>Freeze Effect Prompt Library • Cena 04</span>
+      <span class="brand">@escoladeferramentas</span>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       PÁGINA 6: CENA 5 — TENNIS CHAOS FREEZE
+       ===================================================================== -->
+  <div class="page">
+    <div class="scene-header">
+      <div>
+        <span class="scene-number">SCENE 05</span>
+        <h2 class="scene-title">Tennis Chaos Freeze</h2>
+      </div>
+      <span class="prompt-tag">Explosão Esportiva de Tênis</span>
+    </div>
+
+    <!-- Image Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>📸 Step 1: Image Prompt (Foto Âncora)</span>
+      </div>
+      <div class="prompt-content">Create a photorealistic playful sports freeze-frame using @img as the exact male identity reference. Preserve his face, hairstyle, facial hair, skin tone, age, and natural body proportions.
+Capture him suspended in midair above a sunny suburban driveway, leaning backward in a dynamic diagonal pose. Both arms reach upward with open hands. One leg kicks high toward the upper-right corner, while the other stretches diagonally toward the lower-right foreground. His torso faces the camera, and his expression is excited and surprised. Dress him in a fitted black sleeveless athletic shirt, black sports shorts, and red low-top sneakers with white soles.
+Surround him with floating tennis rackets at different angles, bright yellow-green tennis balls, and curling pastel pink and pale-blue streamers. Place a few larger balls and a partially cropped racket close to the lens, with additional rackets and balls farther behind him. Use a white suburban house with dark shutters, a white picket fence, green shrubs, and clear blue sky as the background. Low camera, 24mm wide-angle lens, full-body framing, strong midday sunshine, coherent shadows beneath the airborne objects, crisp commercial photography with vivid natural colors.</div>
+    </div>
+
+    <!-- Negative Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>🚫 Negative Prompt</span>
+      </div>
+      <div class="prompt-content negative">Different identity, changed body proportions, feminine outfit, extra arms or legs, malformed hands, bent racket frames, tangled anatomy, duplicate person, feet planted on the ground, motion blur, text, headline, social media icons, captions, watermarks, logos.</div>
+    </div>
+
+    <!-- Animation Prompt -->
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>🎬 Step 2: Animation Prompt (Image-to-Video)</span>
+      </div>
+      <div class="prompt-content animation">Create a cinematic bullet-time shot using the reference image. Everything in the scene must remain completely frozen in time throughout the entire video. The male character must remain perfectly frozen in the exact dynamic airborne tennis pose shown in the reference, with absolutely no body movement, head movement, facial movement, blinking, breathing animation, hair movement, clothing movement or expression change.
+Every tennis ball, the tennis racket, colorful ribbons and every other suspended element must remain completely frozen in its exact original position in mid-air. The tennis balls must not travel, fall, spin or rotate. The racket must not move or rotate. The ribbons must not flutter. The house, trees, court and entire environment must remain completely static.
+Only the camera moves. Smoothly orbit the camera around the completely frozen character in a cinematic 180-degree arc during the full duration of the shot. Begin directly from the front, gradually move around one side, reach the 90-degree side profile around the middle of the shot, then continue around and finish directly behind the character at exactly 180 degrees. Use a controlled medium-slow orbital speed — continuously moving and visually noticeable, but neither fast nor excessively slow.
+Keep the character as the fixed center of the orbit and maintain a consistent camera distance. The large foreground tennis balls, racket and smaller background balls should create dramatic realistic 3D parallax as the camera physically travels around the scene. Preserve the character's exact face, identity, clothing, body proportions and pose throughout the entire orbit. Photorealistic cinematic lighting, realistic depth of field, premium sports-commercial cinematography, high-speed photography aesthetic, Matrix-style bullet-time effect, ultra-stable camera movement, one continuous seamless shot, no cuts.</div>
+      <div class="timing-badge">
+        ⏱️ CAMERA TIMING: FRONT → 45° → SIDE 90° → 135° → BACK 180°. EVERYTHING REMAINS PERFECTLY FROZEN. ZERO scene motion except camera.
+      </div>
+    </div>
+
+    <div style="margin-top: auto; padding: 12px 16px; background: rgba(255, 107, 0, 0.08); border: 1px solid rgba(255, 107, 0, 0.3); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 11px; font-weight: 700; color: #FFF;">Siga para mais tutoriais e bibliotecas práticas de IA:</span>
+      <span style="font-size: 13px; font-weight: 900; color: var(--primary);">@escoladeferramentas</span>
+    </div>
+
+    <div class="page-footer">
+      <span>Freeze Effect Prompt Library • Cena 05 (Fim)</span>
       <span class="brand">@escoladeferramentas</span>
     </div>
   </div>
